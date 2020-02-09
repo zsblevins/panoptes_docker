@@ -8,8 +8,15 @@ from yahoo_panoptes.framework.metrics import PanoptesMetricsGroupSet, PanoptesMe
 from yahoo_panoptes.framework.plugins.context import PanoptesPluginContext
 from yahoo_panoptes.framework.resources import PanoptesResource
 
+class IOSXRNapalmPollingPlugin(NapalmPollingPlugin):
+    """
+    Inherits everything from NapalmPollingPlugin
+    """
+    def __init__(self):
+        super().__init__()
+        self.driver = napalm.get_network_driver('iosxr')
 
-class IOSXRNapalmPollingPlugin(PanoptesPollingPlugin):
+class NapalmPollingPlugin(PanoptesPollingPlugin):
     """
     Only classes that inherit from PanoptesPollingPlugin are loaded. (Upstream Configuration Knobs Control This)
     """
@@ -20,9 +27,8 @@ class IOSXRNapalmPollingPlugin(PanoptesPollingPlugin):
         self._device: PanoptesResource = None
         self._execute_frequency: int = 60
         self._logger = None
-        self.iosxr_driver = napalm.get_network_driver('iosxr')
         self.napalm_device_connection = None
-        super(IOSXRNapalmPollingPlugin, self).__init__()
+        super(NapalmPollingPlugin, self).__init__()
 
     def populateMetricsGroupSetWithTimeSeries(self) -> None:
         """
@@ -57,7 +63,7 @@ class IOSXRNapalmPollingPlugin(PanoptesPollingPlugin):
             True: 1
         }
 
-        for interface, object in self.napalm_device_connection.get_interfaces().items():
+        for interface, object in self.napalm_device_connection.get_lldp_neighbors().items():
             panoptes_metrics_group = PanoptesMetricsGroup(self._device, 'napalm_interface', self._execute_frequency)
 
             panoptes_metrics_group.add_dimension(PanoptesMetricDimension('interface_name', interface))
@@ -93,7 +99,7 @@ class IOSXRNapalmPollingPlugin(PanoptesPollingPlugin):
         self._device = context.data
         self._execute_frequency = int(context.config['main']['execute_frequency'])
 
-        self.napalm_device_connection = self.iosxr_driver(
+        self.napalm_device_connection = self.driver(
             hostname=self._device.resource_endpoint,
             username=context.config['napalm']['username'],
             password=context.config['napalm']['password']
