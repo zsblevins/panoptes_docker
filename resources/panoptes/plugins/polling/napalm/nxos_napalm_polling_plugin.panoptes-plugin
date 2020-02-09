@@ -1,6 +1,6 @@
 [Core]
-Name = Napalm Plugin - IOS-XR
-Module = /home/panoptes_v/lib/python3.6/site-packages/yahoo_panoptes/plugins/polling/iosxr_napalm_polling_plugin.py
+Name = Napalm Plugin - NX-OS
+Module = /home/panoptes_v/lib/python3.6/site-packages/yahoo_panoptes/plugins/polling/napalm/nxos_napalm_polling_plugin.py
 
 [Documentation]
 Author = teamzoe
@@ -10,7 +10,7 @@ Description = This is a tutorial plugin
 
 [main]
 execute_frequency = 60
-resource_filter = resource_type = "iosxr"
+resource_filter = resource_type = "nxos"
 namespace = metrics
 
 [napalm]

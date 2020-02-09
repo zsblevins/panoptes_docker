@@ -1,6 +1,6 @@
 [Core]
-Name = Napalm Plugin EOS
-Module = /home/panoptes_v/lib/python3.6/site-packages/yahoo_panoptes/plugins/polling/eos_napalm_polling_plugin.py
+Name = Napalm Plugin - IOS-XR
+Module = /home/panoptes_v/lib/python3.6/site-packages/yahoo_panoptes/plugins/polling/napalm/iosxr_napalm_polling_plugin.py
 
 [Documentation]
 Author = teamzoe
@@ -10,7 +10,7 @@ Description = This is a tutorial plugin
 
 [main]
 execute_frequency = 60
-resource_filter = resource_endpoint = "veos.nanog78.panoptes.cloud.tesuto.com"
+resource_filter = resource_type = "iosxr"
 namespace = metrics
 
 [napalm]
