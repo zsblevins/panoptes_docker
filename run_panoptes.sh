@@ -13,7 +13,7 @@ else
   mount_options=""
 fi
 
-docker run -rm -d \
+docker run --rm -d \
     -e "SNMP_COMM_STRING=nanog78" \
     --sysctl net.core.somaxconn=511 \
     --name="panoptes_docker" \
@@ -23,4 +23,4 @@ docker run -rm -d \
     -p 127.0.0.1:8080:3000/tcp \
     panoptes_docker
 
-docker exec -it panoptes_docker /etc/redis/populate_redis.sh
+docker exec panoptes_docker /bin/bash /etc/redis/populate_redis.sh
