@@ -1,7 +1,6 @@
 [Core]
 Name = Napalm Plugin - IOS-XR
-Module =
-# /home/panoptes_v/lib/python3.6/site-packages/yahoo_panoptes/plugins/polling/iosxr_napalm_polling_device_interface_metrics.py
+Module = /home/panoptes_v/lib/python3.6/site-packages/yahoo_panoptes/plugins/polling/iosxr_napalm_polling_device_interface_metrics.py
 
 [Documentation]
 Author = teamzoe
@@ -15,7 +14,7 @@ resource_filter = resource_class = "system"
 namespace = metrics
 
 [napalm]
-username = teamzoe # Device Username (For the sake of the tutorial. In production secrets are stored elsewhere.)
+username = hackers # Device Username (For the sake of the tutorial. In production secrets are stored elsewhere.)
 password = nanog78 # Device Password DON'T DO THIS IN PROD. Create a class which inherits from the PanoptesKeyValueStore to store secrets in.
 
 [transforms]
