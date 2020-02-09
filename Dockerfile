@@ -166,7 +166,7 @@ COPY resources/misc/*.sh        /home/panoptes/
 
 # Build Panoptes - /home/panoptes_v/bin/python
 RUN python3 -m venv /home/panoptes_v && . /home/panoptes_v/bin/activate && pip3 install wheel \
-  && pip3 install yahoo-panoptes && deactivate
+  && pip3 install yahoo-panoptes && pip3 install napalm && deactivate
 
 # cwd /home
 WORKDIR /home/panoptes
