@@ -52,12 +52,7 @@ class NapalmPollingPlugin(PanoptesPollingPlugin):
 
         The text above shows the structure of how time series data is stored within the PanoptesMetricsGroupSet.
         """
-        boolean_conversion = {
-            False: 0,
-            True: 1
-        }
-
-speed
+        interfaces = self.napalm_device_connection.get_interfaces()
         interface_counters = self.napalm_device_connection.get_interfaces_counters()
         for interface, object in self.napalm_device_connection.get_lldp_neighbors().items():
             panoptes_metrics_group = PanoptesMetricsGroup(self._device, 'napalm_interface', self._execute_frequency)
@@ -66,14 +61,17 @@ speed
 
             panoptes_metrics_group.add_dimension(PanoptesMetricDimension('neighbor', object['hostname'] or 'no_hostname_description'))
             panoptes_metrics_group.add_dimension(PanoptesMetricDimension('neighbor_port', object['port'] or 'no_port_description'))
-            #TODO error handling for interfaces
+            #if interface in interface_counters:
             panoptes_metrics_group.add_metrics(
-                PanoptesMetric('input_rate', interface_counters[interface]['rx_unicast_packets'],PanoptesMetricType.GAUGE)
-                )
+                  PanoptesMetric('input_rate', interface_counters[interface]['rx_unicast_packets'],PanoptesMetricType.GAUGE)
+                  )
             panoptes_metrics_group.add_metrics(
-                PanoptesMetric('output_rate', interface_counters[interface]['tx_unicast_packets'],PanoptesMetricType.GAUGE)
-                )
-            #TODO speed
+                  PanoptesMetric('output_rate', interface_counters[interface]['tx_unicast_packets'],PanoptesMetricType.GAUGE)
+                  )
+            #if interface in interfaces:
+            panoptes_metrics_group.add_metrics(
+                  PanoptesMetric('speed', interfaces[interface]['speed'],PanoptesMetricType.GAUGE)
+                  )
             self._panoptes_metrics_group_set.add(panoptes_metrics_group)
 
     def run(self, context: PanoptesPluginContext) -> PanoptesMetricsGroupSet:
