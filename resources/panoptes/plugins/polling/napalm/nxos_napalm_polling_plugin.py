@@ -1,5 +1,5 @@
 import napalm
-from .napalm_polling_plugin import NapalmPollingPlugin
+from yahoo_panoptes.plugins.polling.napalm.napalm_polling_plugin import NapalmPollingPlugin
 
 
 class IOSXRNapalmPollingPlugin(NapalmPollingPlugin):
