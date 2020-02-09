@@ -146,7 +146,7 @@ RUN adduser --disabled-password --gecos '' panoptes && \
 
 # Copying over the default configurations for Panoptes
 # built from https://github.com/yahoo/panoptes/tree/master/examples
-COPY resources/panoptes/localhost.json              /home/panoptes/conf/
+COPY resources/panoptes/conf/localhost.json              /home/panoptes/conf/
 COPY resources/panoptes/conf/panoptes.ini           /home/panoptes/conf/
 COPY resources/panoptes/conf/logging.ini            /home/panoptes/conf/
 COPY resources/panoptes/conf/influxdb_consumer.ini  /home/panoptes/conf/
