@@ -10,7 +10,7 @@ Description = This is a tutorial plugin
 
 [main]
 execute_frequency = 60
-resource_filter = resource_class = "system"
+resource_filter = resource_type = "nxos"
 namespace = metrics
 
 [napalm]
