@@ -1,7 +1,7 @@
 import napalm
 from .napalm_polling_plugin import NapalmPollingPlugin
 
-class IOSXRNapalmPollingPlugin(NapalmPollingPlugin):
+class EOSNapalmPollingPlugin(NapalmPollingPlugin):
     """
     Inherits everything from NapalmPollingPlugin
     """

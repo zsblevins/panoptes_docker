@@ -14,8 +14,8 @@ resource_filter = resource_type = "nxos"
 namespace = metrics
 
 [napalm]
-username = hackers # Device Username (For the sake of the tutorial. In production secrets are stored elsewhere.)
-password = nanog78 # Device Password DON'T DO THIS IN PROD. Create a class which inherits from the PanoptesKeyValueStore to store secrets in.
+username = hackers
+password = nanog78
 
 [transforms]
 label = rate:napalm_interface:input_rate,output_rate
