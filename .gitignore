@@ -5,6 +5,7 @@
 
 # ignore mypy
 .mypy_*
+**/__pycache__
 
 # User-specific stuff
 .idea/**/workspace.xml

@@ -9,38 +9,6 @@ from yahoo_panoptes.framework.metrics import PanoptesMetricsGroupSet, \
 from yahoo_panoptes.framework.plugins.context import PanoptesPluginContext
 from yahoo_panoptes.framework.resources import PanoptesResource
 
-class IOSXRNapalmPollingPlugin(NapalmPollingPlugin):
-    """
-    Inherits everything from NapalmPollingPlugin
-    """
-    def __init__(self):
-        super().__init__()
-        self.driver = napalm.get_network_driver('iosxr')
-
-class NXOSNapalmPollingPlugin(NapalmPollingPlugin):
-    """
-    Inherits everything from NapalmPollingPlugin
-    """
-    def __init__(self):
-        super().__init__()
-        self.driver = napalm.get_network_driver('nxos')
-
-
-class EOSNapalmPollingPlugin(NapalmPollingPlugin):
-    """
-    Inherits everything from NapalmPollingPlugin
-    """
-    def __init__(self):
-        super().__init__()
-        self.driver = napalm.get_network_driver('eos')
-
-class JunosNapalmPollingPlugin(NapalmPollingPlugin):
-    """
-    Inherits everything from NapalmPollingPlugin
-    """
-    def __init__(self):
-        super().__init__()
-        self.driver = napalm.get_network_driver('junos')
 
 class NapalmPollingPlugin(PanoptesPollingPlugin):
     """

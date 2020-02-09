@@ -2,7 +2,7 @@
 
 # Take mount dir as arg, otherwise use $PWD
 if [[ $1 == "" ]]; then
-  mount=$PWD
+  mount=$PWD/resources/panoptes
 else
   mount=$1
 fi
