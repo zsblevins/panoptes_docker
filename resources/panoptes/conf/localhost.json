@@ -4,19 +4,6 @@
     "resource_site": "local",
     "resource_class": "system",
     "resource_subclass": "host",
-    "resource_type": "generic",
-    "resource_id": "localhost",
-    "resource_endpoint": "localhost",
-    "resource_creation_timestamp": "1512629517.03121",
-    "resource_metadata": {
-      "_resource_ttl": "900"
-    }
-  },
-  {
-    "resource_plugin": "plugin_discovery_from_json_file",
-    "resource_site": "local",
-    "resource_class": "system",
-    "resource_subclass": "host",
     "resource_type": "eos",
     "resource_id": "veos.nanog78.panoptes.cloud.tesuto.com",
     "resource_endpoint": "veos.nanog78.panoptes.cloud.tesuto.com",
@@ -29,8 +16,8 @@
     "resource_plugin": "plugin_discovery_from_json_file",
     "resource_site": "local",
     "resource_class": "system",
-    "resource_subclass": "junos",
-    "resource_type": "generic",
+    "resource_subclass": "host",
+    "resource_type": "junos",
     "resource_id": "vmx.nanog78.panoptes.cloud.tesuto.com",
     "resource_endpoint": "vmx.nanog78.panoptes.cloud.tesuto.com",
     "resource_creation_timestamp": "1512629519.03121",

@@ -1,4 +1,5 @@
-from napalm_polling_plugin import NapalmPollingPlugin
+import napalm
+from .napalm_polling_plugin import NapalmPollingPlugin
 
 class IOSXRNapalmPollingPlugin(NapalmPollingPlugin):
     """

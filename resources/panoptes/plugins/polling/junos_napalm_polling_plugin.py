@@ -1,3 +1,7 @@
+import napalm
+from .napalm_polling_plugin import NapalmPollingPlugin
+
+
 class JunosNapalmPollingPlugin(NapalmPollingPlugin):
     """
     Inherits everything from NapalmPollingPlugin

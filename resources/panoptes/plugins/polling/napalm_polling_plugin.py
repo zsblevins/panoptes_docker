@@ -1,7 +1,6 @@
 ### TODO THIS WAS JUST COPIED FROM THE TUTORIAL
 from typing import Dict, Any
 import time
-import napalm
 from yahoo_panoptes.polling.polling_plugin import PanoptesPollingPlugin
 from yahoo_panoptes.framework.metrics import PanoptesMetricsGroupSet, \
     PanoptesMetricsGroup, PanoptesMetric, \
