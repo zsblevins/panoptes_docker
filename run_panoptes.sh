@@ -13,7 +13,8 @@ else
   mount_options=""
 fi
 
-docker run -d \
+docker run --rm -d \
+    -e "SNMP_COMM_STRING=nanog78" \
     --sysctl net.core.somaxconn=511 \
     --name="panoptes_docker" \
     --shm-size=2G \
@@ -21,3 +22,5 @@ docker run -d \
     -v ${mount}/conf/localhost.json:/home/panoptes/conf/localhost.json${mount_options} \
     -p 127.0.0.1:8080:3000/tcp \
     panoptes_docker
+
+docker exec panoptes_docker /bin/bash /etc/redis/populate_redis.sh
