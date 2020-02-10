@@ -60,18 +60,23 @@ class NapalmPollingPlugin(PanoptesPollingPlugin):
 
             panoptes_metrics_group.add_dimension(PanoptesMetricDimension('neighbor', obj[0]['hostname'] or 'no_hostname_description'))
             panoptes_metrics_group.add_dimension(PanoptesMetricDimension('neighbor_port', obj[0]['port'] or 'no_port_description'))
+
+            if interface in interfaces:
+                panoptes_metrics_group.add_dimension(
+                    PanoptesMetricDimension('speed', str(interfaces[interface]['speed'])))
+            else:
+                panoptes_metrics_group.add_dimension(
+                    PanoptesMetricDimension('speed', '0'))
+
             #if interface in interface_counters:
             self._logger.debug('INTERFACE_COUNTERS: %s', interface_counters)
-            panoptes_metrics_group.add_metrics(
-                  PanoptesMetric('input_rate', interface_counters[interface]['rx_unicast_packets'],PanoptesMetricType.GAUGE)
+            panoptes_metrics_group.add_metric(
+                  PanoptesMetric('input_rate', interface_counters[interface]['rx_unicast_packets'], PanoptesMetricType.COUNTER)
                   )
-            panoptes_metrics_group.add_metrics(
-                  PanoptesMetric('output_rate', interface_counters[interface]['tx_unicast_packets'],PanoptesMetricType.GAUGE)
+            panoptes_metrics_group.add_metric(
+                  PanoptesMetric('output_rate', interface_counters[interface]['tx_unicast_packets'], PanoptesMetricType.COUNTER)
                   )
-            #if interface in interfaces:
-            panoptes_metrics_group.add_metrics(
-                  PanoptesMetric('speed', interfaces[interface]['speed'],PanoptesMetricType.GAUGE)
-                  )
+
             self._panoptes_metrics_group_set.add(panoptes_metrics_group)
 
     def run(self, context: PanoptesPluginContext) -> PanoptesMetricsGroupSet:
