@@ -69,6 +69,11 @@ class NapalmPollingPlugin(PanoptesPollingPlugin):
                     PanoptesMetricDimension('speed', '0'))
 
             self._logger.debug('INTERFACE_COUNTERS: %s', interface_counters)
+
+            # Avoid key errors on dummy interfaces
+            if interface not in interface_counters:
+                continue
+
             panoptes_metrics_group.add_metric(
                   PanoptesMetric('input_rate', interface_counters[interface]['rx_unicast_packets'], PanoptesMetricType.COUNTER)
                   )
