@@ -53,14 +53,15 @@ class NapalmPollingPlugin(PanoptesPollingPlugin):
         """
         interfaces = self.napalm_device_connection.get_interfaces()
         interface_counters = self.napalm_device_connection.get_interfaces_counters()
-        for interface, object in self.napalm_device_connection.get_lldp_neighbors().items():
+        for interface, obj in self.napalm_device_connection.get_lldp_neighbors().items():
             panoptes_metrics_group = PanoptesMetricsGroup(self._device, 'napalm_interface', self._execute_frequency)
 
             panoptes_metrics_group.add_dimension(PanoptesMetricDimension('interface_name', interface))
 
-            panoptes_metrics_group.add_dimension(PanoptesMetricDimension('neighbor', object['hostname'] or 'no_hostname_description'))
-            panoptes_metrics_group.add_dimension(PanoptesMetricDimension('neighbor_port', object['port'] or 'no_port_description'))
+            panoptes_metrics_group.add_dimension(PanoptesMetricDimension('neighbor', obj[0]['hostname'] or 'no_hostname_description'))
+            panoptes_metrics_group.add_dimension(PanoptesMetricDimension('neighbor_port', obj[0]['port'] or 'no_port_description'))
             #if interface in interface_counters:
+            self._logger.debug('INTERFACE_COUNTERS: %s', interface_counters)
             panoptes_metrics_group.add_metrics(
                   PanoptesMetric('input_rate', interface_counters[interface]['rx_unicast_packets'],PanoptesMetricType.GAUGE)
                   )
