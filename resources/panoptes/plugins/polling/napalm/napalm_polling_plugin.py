@@ -68,7 +68,6 @@ class NapalmPollingPlugin(PanoptesPollingPlugin):
                 panoptes_metrics_group.add_dimension(
                     PanoptesMetricDimension('speed', '0'))
 
-            #if interface in interface_counters:
             self._logger.debug('INTERFACE_COUNTERS: %s', interface_counters)
             panoptes_metrics_group.add_metric(
                   PanoptesMetric('input_rate', interface_counters[interface]['rx_unicast_packets'], PanoptesMetricType.COUNTER)
