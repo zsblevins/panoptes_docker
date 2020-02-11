@@ -10,7 +10,7 @@ Description = This is a tutorial plugin
 
 [main]
 execute_frequency = 60
-resource_filter = resource_type = 'eos'
+resource_filter = resource_type = "eos"
 namespace = metrics
 
 [napalm]
